@@ -22,6 +22,7 @@ module.exports = {
           use: ["css-loader","postcss-loader"]
         })
       },
+      { test: /\.(jpe?g|png)$/, use: 'file-loader' },
       {
         test: require.resolve('jquery'),
         use: [{

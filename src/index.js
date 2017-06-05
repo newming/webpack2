@@ -1,9 +1,7 @@
-import './main.css';
-import $ from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
+import App from './App';
 import './main.css';
-import test from './test.js';
 
-console.log($);
-test()
-console.log(666);
+ReactDOM.render(<App />, document.getElementById('root'))
