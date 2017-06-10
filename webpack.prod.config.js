@@ -4,10 +4,14 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
+  // entry: "./src/index.js",
+  entry: {
+    app: path.resolve(__dirname, 'src/index.js'),
+    vendor: ['jquery']
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.js",
+    filename: "js/[name].bundle.js",
     // publicPath: "./dist/"
   },
   // watch: true,
@@ -22,7 +26,7 @@ module.exports = {
           use: ["css-loader","postcss-loader"]
         })
       },
-      { test: /\.(jpe?g|png)$/, use: 'file-loader' },
+      { test: /\.(jpe?g|png)$/, use: 'file-loader?name=images/[name].[hash:8].[ext]' },
       {
         test: require.resolve('jquery'),
         use: [{
@@ -43,7 +47,7 @@ module.exports = {
       'process.env.NODE_ENV': '"production"'
     }),
     new ExtractTextPlugin({
-      filename: 'build.min.css'
+      filename: 'style/build.min.css'
     }),
     new HtmlWebpackPlugin({
       title: 'hello world',
