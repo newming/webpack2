@@ -1,17 +1,14 @@
 const path = require('path');
-let webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
-    // publicPath: "/dist/"
+    filename: "bundle.js"
   },
-  // watch: true,
   devtool: "source-map",
   devServer: {
     compress: true,
@@ -37,13 +34,9 @@ module.exports = {
     ]
   },
   plugins: [
-    // new ExtractTextPlugin({
-    //   filename: 'build.min.css'
-    // }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'hello world',
-      // filename: 'admin.html' 叫别的不行。。。
       template: 'templete/index.html'
     }),
     new OpenBrowserPlugin({
