@@ -7,7 +7,7 @@ module.exports = {
   // entry: "./src/index.js",
   entry: {
     app: path.resolve(__dirname, 'src/index.js'),
-    vendor: ['jquery']
+    // vendor: ['jquery']
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -27,13 +27,13 @@ module.exports = {
         })
       },
       { test: /\.(jpe?g|png)$/, use: 'file-loader?name=images/[name].[hash:8].[ext]' },
-      {
-        test: require.resolve('jquery'),
-        use: [{
-          loader: 'expose-loader',
-          options: '$'
-        }]
-      }
+      //{
+      //  test: require.resolve('jquery'),
+      //  use: [{
+      //    loader: 'expose-loader',
+      //    options: '$'
+      //  }]
+      //}
     ]
   },
   plugins: [
